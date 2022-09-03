@@ -19,6 +19,10 @@ impl Snake {
         Snake { body, direction }
     }
 
+    pub fn borrow_body(&self) -> &Vec<Point> {
+        &self.body
+    }
+
     pub fn move_in_direction(&mut self, direction: Direction) {
         self.move_in_direction_and_maybe_grow(direction, false)
     }
