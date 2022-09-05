@@ -109,7 +109,7 @@ impl Game {
         self.renderer.draw_points(self.snake.borrow_body(), '@');
         self.renderer.draw_point(self.snake.borrow_head(), '🐸');
 
-        if self.is_snake_hitting_borders() {
+        if self.is_snake_hitting_borders() || self.snake.is_overlapping_self() {
             self.renderer.draw_point(self.snake.borrow_head(), '💀');
             return GameState::GameOver;
         }
