@@ -5,9 +5,7 @@ This is me trying to learn Rust by building a snake game.
 I am loosely following the great tutorial [Let's Build Snake with Rust](https://blog.scottlogic.com/2020/10/08/lets-build-snake-with-rust.html) by Jonathan Henderson.
 
 <center>
-
 <img src="screenshot.png" />
-
 </center>
 
 ## Thoughts & Impressions
