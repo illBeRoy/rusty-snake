@@ -6,7 +6,6 @@ use crate::point::Point;
 #[derive(Debug)]
 pub struct Snake {
     body: Vec<Point>,
-    direction: Direction,
 }
 
 impl Snake {
@@ -16,7 +15,7 @@ impl Snake {
             .map(|i| head.transform(&direction.opposite(), i.into()))
             .collect();
 
-        Snake { body, direction }
+        Snake { body }
     }
 
     pub fn borrow_body(&self) -> &Vec<Point> {
@@ -31,6 +30,15 @@ impl Snake {
         self.move_in_direction_and_maybe_grow(direction, true)
     }
 
+    pub fn is_overlapping_self(&self) -> bool {
+        let head = self.body.first().unwrap();
+
+        self.body
+            .iter()
+            .skip(1)
+            .any(|body_part| body_part.x == head.x && body_part.y == head.y)
+    }
+
     fn move_in_direction_and_maybe_grow(&mut self, direction: Direction, should_grow: bool) {
         let new_head = self.body.first().unwrap().transform(&direction, 1);
 
@@ -39,7 +47,5 @@ impl Snake {
         if !should_grow {
             self.body.pop();
         }
-
-        self.direction = direction;
     }
 }

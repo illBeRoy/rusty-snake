@@ -4,7 +4,7 @@ use crossterm::terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType, S
 use crossterm::ExecutableCommand;
 use std::io::stdout;
 
-use crate::point::Point;
+use crate::point::{self, Point};
 
 pub struct Renderer {
     dimensions: (u16, u16),
@@ -53,12 +53,32 @@ impl Renderer {
         assert!(self.initialized, "Renderer not initialized");
 
         stdout()
-            .execute(Clear(ClearType::All))
-            .unwrap()
             .execute(SetBackgroundColor(self.background_color))
+            .unwrap()
+            .execute(Clear(ClearType::All))
             .unwrap();
 
         self
+    }
+
+    pub fn clear_line(&self, y: u16) -> &Self {
+        assert!(self.initialized, "Renderer not initialized");
+
+        stdout()
+            .execute(SetBackgroundColor(self.background_color))
+            .unwrap()
+            .execute(MoveTo(0, y))
+            .unwrap()
+            .execute(Clear(ClearType::CurrentLine))
+            .unwrap();
+
+        self
+    }
+
+    pub fn clear_points(&self, points: &Vec<Point>) {
+        for point in points {
+            self.draw_character_at(point.clone(), ' ');
+        }
     }
 
     pub fn draw_rect_frame(&self, from: &Point, size: (u16, u16), character: char) -> &Self {
@@ -88,6 +108,20 @@ impl Renderer {
         for point in points {
             self.draw_character_at(point.clone(), character);
         }
+
+        self
+    }
+
+    pub fn draw_text(&self, text: &str, at: &Point) -> &Self {
+        assert!(self.initialized, "Renderer not initialized");
+
+        stdout()
+            .execute(MoveTo(at.x, at.y))
+            .unwrap()
+            .execute(SetForegroundColor(Color::White))
+            .unwrap()
+            .execute(Print(text))
+            .unwrap();
 
         self
     }
