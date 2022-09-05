@@ -152,7 +152,7 @@ impl Game {
         loop {
             self.fruit_position = Point {
                 x: rand::thread_rng().gen_range(1..(self.board_size.0 - 1)),
-                y: rand::thread_rng().gen_range(2..(self.board_size.1 + 1)),
+                y: rand::thread_rng().gen_range(3..(self.board_size.1)),
             };
 
             let is_new_fruit_position_inside_snake =
