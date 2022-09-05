@@ -40,8 +40,6 @@ impl Snake {
     }
 
     pub fn is_overlapping_self(&self) -> bool {
-        let head = self.body.first().unwrap();
-
         self.body
             .iter()
             .skip(1)

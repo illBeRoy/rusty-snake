@@ -11,10 +11,12 @@ I am loosely following the great tutorial [Let's Build Snake with Rust](https://
 ## Thoughts & Impressions
 I've listed every passing thought about Rust during the time I worked on this project. Some of the things I wrote down are probably elementary and can be easily answered by diving into the docs or asking around the community, but I believe that at the very least it can help portray the learning process I've had with the language.
 
-### Getting Started
+### Developer Experience
 * Love how easy it is to get started! (with both cargo and the rust-analyzer vscode extension)
 * Out of the box auto formatting? Sign me up!!
 * But no auto semicolon addition? I understand that this is a syntax error (and not styling), but at least let us [prettier](https://prettier.io/) enthusiast to opt in :)
+* I **LOVE** how every tiny thing (unused imports, for instance) shows up.
+* In general, dead code elimination here is impeccable. It tells you exactly what is not being used, no ifs, no buts, no maybes. This is where the language's super strict nature really shines, and I think that despite the verboseness it imposes, I am definitely willing to pay the price.
 
 ### Modules
 * Declaring modules upfront? Interesting concept. There **is** some redundancy, though, in my opinion. Easily solvable with an "add module" vscode task.

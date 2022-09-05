@@ -4,7 +4,7 @@ use crossterm::terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType, S
 use crossterm::ExecutableCommand;
 use std::io::stdout;
 
-use crate::point::{self, Point};
+use crate::point::Point;
 
 pub struct Renderer {
     dimensions: (u16, u16),
