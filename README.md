@@ -4,6 +4,12 @@ This is me trying to learn Rust by building a snake game.
 
 I am loosely following the great tutorial [Let's Build Snake with Rust](https://blog.scottlogic.com/2020/10/08/lets-build-snake-with-rust.html) by Jonathan Henderson.
 
+<center>
+
+<img src="screenshot.png" />
+
+</center>
+
 ## Thoughts & Impressions
 I've listed every passing thought about Rust during the time I worked on this project. Some of the things I wrote down are probably elementary and can be easily answered by diving into the docs or asking around the community, but I believe that at the very least it can help portray the learning process I've had with the language.
 
