@@ -112,6 +112,10 @@ impl Renderer {
         self
     }
 
+    pub fn draw_point(&self, point: &Point, character: char) -> &Self {
+        self.draw_character_at(point.clone(), character)
+    }
+
     pub fn draw_text(&self, text: &str, at: &Point) -> &Self {
         assert!(self.initialized, "Renderer not initialized");
 

@@ -18,6 +18,10 @@ impl Snake {
         Snake { body }
     }
 
+    pub fn borrow_head(&self) -> &Point {
+        self.body.first().unwrap()
+    }
+
     pub fn borrow_body(&self) -> &Vec<Point> {
         &self.body
     }
@@ -30,13 +34,18 @@ impl Snake {
         self.move_in_direction_and_maybe_grow(direction, true)
     }
 
+    pub fn is_bumping_at_point(&self, point: &Point) -> bool {
+        let head = self.body.first().unwrap();
+        head.x == point.x && head.y == point.y
+    }
+
     pub fn is_overlapping_self(&self) -> bool {
         let head = self.body.first().unwrap();
 
         self.body
             .iter()
             .skip(1)
-            .any(|body_part| body_part.x == head.x && body_part.y == head.y)
+            .any(|body_part| self.is_bumping_at_point(body_part))
     }
 
     fn move_in_direction_and_maybe_grow(&mut self, direction: Direction, should_grow: bool) {
